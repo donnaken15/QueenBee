@@ -395,7 +395,7 @@ namespace Nanook.QueenBee.Parser
 			return null;
 		}
 
-		internal static void PopulateDebugNames(string debugFileContents)
+		public static void PopulateDebugNames(string debugFileContents)
 		{
 			string[] d = debugFileContents.Replace("\r", "").Split('\n');
 

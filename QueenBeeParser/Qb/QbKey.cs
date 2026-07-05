@@ -49,10 +49,10 @@ namespace Nanook.QueenBee.Parser
 
 		public QbKey Clone()
 		{
-			if (this.HasText)
-				return QbKey.Create(this.Text);
+			if (HasText)
+				return Create(Text);
 			else
-				return QbKey.Create(this.Crc);
+				return Create(Crc);
 		}
 
 		///<summary>
@@ -75,7 +75,7 @@ namespace Nanook.QueenBee.Parser
 			int i;
 			int length;
 			length = str.Length;
-			crc = ((uint)0xFFFFFFFF);
+			crc = 0xFFFFFFFF;
 			for (i = 0; i < length; (i)++)
 				crc = crc >> 8 & 0x00FFFFFF ^ crc_tab[(crc ^ str[i]) & 0xFF];
 			return new QbKey(crc, text);
@@ -120,7 +120,7 @@ namespace Nanook.QueenBee.Parser
 
 		public override int GetHashCode()
 		{
-			return base.GetHashCode() & (int)this._crc; //Hmm
+			return base.GetHashCode() & (int)_crc; //Hmm
 		}
 
 		public bool HasText
